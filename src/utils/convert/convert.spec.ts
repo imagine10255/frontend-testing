@@ -1,5 +1,9 @@
 import {getVariablesFileMap} from './convert';
 
+const addPrefix = (name: string): string => {
+    return `my_${name}`;
+};
+
 
 /** =================================
  *            請勿異動此檔案
@@ -7,10 +11,10 @@ import {getVariablesFileMap} from './convert';
 describe('Convert', () => {
 
     it('Test Jest', async () => {
-        const input = {name: 'my_imagine'}
-        const addPrefix = `my_${input.name}`
-        const equalResult = {name: `my_imagine`}
-        expect(input).toStrictEqual(equalResult);
+        const input = 'imagine';
+
+        const equalResult = 'my_imagine';
+        expect(addPrefix(input)).toStrictEqual(equalResult);
     });
 
 
