@@ -23,9 +23,9 @@ const isBlob = input => 'Blob' in window && input instanceof Blob;
  * (不可異動 convert.spec.ts)
  *
  * ex:
- * $ yarn test -t=Base
- * $ yarn test -t=AddChild
- * $ yarn test -t=AddFile2
+ * $ yarn test --t Base
+ * $ yarn test --t AddChild
+ * $ yarn test --t AddFile2
  *
  * @param originVariables 解析來源參數
  * @return {
