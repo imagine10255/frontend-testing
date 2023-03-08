@@ -1,8 +1,11 @@
-type TVariables = {
-    [key: string]: TVariables|string|number|boolean|File|Blob
-}
+// answer by src/library/graphql/utils.ts
+
+
+export type TFileMapVariables = Record<string, unknown>;
+
+
 interface IConvertRes {
-    variables: TVariables,
+    variables: TFileMapVariables,
     map: string[],
     values: File[]
 }
@@ -31,7 +34,7 @@ const isBlob = input => 'Blob' in window && input instanceof Blob;
  *     values: Array<File> 從 variables 收集來的 File
  * }
  */
-export const getVariablesFileMap = <V extends TVariables>(originVariables: V): IConvertRes => {
+export const getVariablesFileMap = <V extends TFileMapVariables>(originVariables: V): IConvertRes => {
     // ...寫你的邏輯, 若有需要可以增加 Function, 或是 更改此 Function 的參數
     return {variables: {}, map: [], values: []};
 }
