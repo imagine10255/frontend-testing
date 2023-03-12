@@ -1,4 +1,4 @@
-import {getVariablesFileMap} from './convert';
+import {getVariablesFileMap} from './convertFileMap';
 
 const addPrefix = (name: string): string => {
     return `my_${name}`;
@@ -8,14 +8,14 @@ const addPrefix = (name: string): string => {
 /** =================================
  *            請勿異動此檔案
  ================================== */
-describe('Convert', () => {
+describe('Convert FileMap', () => {
 
-    it('Test Jest', async () => {
-        const input = 'imagine';
-
-        const equalResult = 'my_imagine';
-        expect(addPrefix(input)).toStrictEqual(equalResult);
-    });
+    // it('Test Jest', async () => {
+    //     const input = 'imagine';
+    //
+    //     const equalResult = 'my_imagine';
+    //     expect(addPrefix(input)).toStrictEqual(equalResult);
+    // });
 
 
 
@@ -23,6 +23,9 @@ describe('Convert', () => {
 
     it('Base', async () => {
 
+        /** -----------------------------------------
+         |                  Input                   |
+         /** ---------------------------------------*/
         const file1 = new File(['avatar'], 'avatar.webp', {type: 'image/jpeg'});
         const input = {
             teamId: 1,
@@ -33,9 +36,16 @@ describe('Convert', () => {
             file1,
         };
 
-        const result = getVariablesFileMap(input);
+        /** -----------------------------------------
+         |                  Output                   |
+         /** ---------------------------------------*/
+        const output = getVariablesFileMap(input);
 
-        // 預期結果
+
+
+        /** -----------------------------------------
+         |                  Equal                   |
+         /** ---------------------------------------*/
         const equalResult = {
             variables: {
                 teamId: 1,
@@ -49,7 +59,7 @@ describe('Convert', () => {
             values: [file1]
         };
 
-        expect(result).toStrictEqual(equalResult);
+        expect(output).toStrictEqual(equalResult);
     });
 
 
@@ -57,6 +67,10 @@ describe('Convert', () => {
 
 
     it('AddChild', async () => {
+
+        /** -----------------------------------------
+         |                  Input                   |
+         /** ---------------------------------------*/
         const file1 = new File(['avatar'], 'avatar.webp', {type: 'image/jpeg'});
         const input = {
             teamId: 1,
@@ -70,10 +84,15 @@ describe('Convert', () => {
             },
         };
 
-        const result = getVariablesFileMap(input);
+        /** -----------------------------------------
+         |                  Output                   |
+         /** ---------------------------------------*/
+        const output = getVariablesFileMap(input);
 
 
-        // 預期結果
+        /** -----------------------------------------
+         |                  Equal                   |
+         /** ---------------------------------------*/
         const equalResult = {
             variables: {
                 teamId: 1,
@@ -90,10 +109,14 @@ describe('Convert', () => {
             values: [file1]
         };
 
-        expect(result).toStrictEqual(equalResult);
+        expect(output).toStrictEqual(equalResult);
     });
 
     it('AddFile2', async () => {
+
+        /** -----------------------------------------
+         |                  Input                   |
+         /** ---------------------------------------*/
         const file1 = new File(['avatar'], 'avatar.webp', {type: 'image/jpeg'});
         const file2 = new File(['thumb'], 'thumb.webp', {type: 'image/jpeg'});
         const input = {
@@ -109,10 +132,17 @@ describe('Convert', () => {
             },
         };
 
-        const result = getVariablesFileMap(input);
+
+        /** -----------------------------------------
+         |                  Output                   |
+         /** ---------------------------------------*/
+        const output = getVariablesFileMap(input);
 
 
-        // 預期結果
+
+        /** -----------------------------------------
+         |                  Equal                   |
+         /** ---------------------------------------*/
         const equalResult = {
             variables: {
                 teamId: 1,
@@ -130,7 +160,7 @@ describe('Convert', () => {
             values: [file1, file2]
         };
 
-        expect(result).toStrictEqual(equalResult);
+        expect(output).toStrictEqual(equalResult);
     });
 
 
